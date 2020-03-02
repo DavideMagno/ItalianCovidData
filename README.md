@@ -1,4 +1,4 @@
-# Time Series of the Covid19 data in Italy
+# Time Series of the Covid19 epidemic data in Italy
 In this repo I make available the time series of data as communicated by the [Protezione Civile](http://www.protezionecivile.gov.it/web/guest/media-comunicazione/comunicati-stampa) every day at 6pm CET.
 
 Two data-sets are provided starting from the 25th of February:
