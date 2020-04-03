@@ -15,9 +15,9 @@ div.outer {
 /* Customize fonts */
 body, label, input, button, select { 
   font-family: 'Helvetica Neue', Helvetica;
-  font-weight: 200;
+  font-weight: 170;
 }
-h1, h2, h3, h4 { font-weight: 400; }
+h1, h2, h3, h4 { font-weight: 350; }
 
 #controls {
   /* Appearance */
@@ -26,9 +26,10 @@ h1, h2, h3, h4 { font-weight: 400; }
   cursor: move;
   /* Fade out while not hovering */
   opacity: 0.65;
-  zoom: 0.9;
+  /*zoom: 0.9;*/
   transition: opacity 500ms 1s;
 }
+
 #controls:hover {
   /* Fade in while hovering */
   opacity: 0.95;

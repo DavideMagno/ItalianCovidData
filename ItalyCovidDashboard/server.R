@@ -89,16 +89,17 @@ shinyServer(function(input, output, session) {
         } else {
             text <- paste("Positive Cases", field())
         }
-        output$test <- plotly::renderPlotly({
+        output$dynamic <- plotly::renderPlotly({
             plot.data() %>%
+                as.data.frame() %>% 
                 plotly::plot_ly(x = ~Date) %>%
                 plotly::add_trace(y = ~Total, type = "scatter",
-                                  mode = "lines+markers") %>% 
+                                  mode = "lines+markers") %>%
                 plotly::layout(
                     title = paste("Dynamic in", name()),
                     yaxis = list(title = text,
                                  type = logscale())
-                ) %>% 
+                ) %>%
                 plotly::config(displayModeBar = FALSE)
         })
     })
@@ -117,21 +118,40 @@ shinyServer(function(input, output, session) {
                              selected = stillSelected, server = TRUE)
     })
     
-    output$ziptable <- DT::renderDataTable({
+    analysis.table <- reactive({
         if(is.null(input$provinces)) {
             data <- Data$covid.regions
             df <- data %>%
-                filter(
-                    is.null(input$regions)   | Region %in% input$regions
-                ) 
+                dplyr::filter(
+                    is.null(input$regions)     | Region %in% input$regions
+                ) %>% 
+                dplyr::select(Date, Region, Hospitalised, `In ICU`, 
+                              `Home Isolation`, Healed, Dead, Total, Tests)
         } else {
             data <- Data$covid.province
             df <- data %>%
-                filter(
-                    is.null(input$regions)   | Region %in% input$regions,
-                    is.null(input$provinces) | Province %in% input$provinces
+                dplyr::filter(
+                    is.null(input$regions)     | Region %in% input$regions,
+                    is.null(input$provinces)   | Province %in% input$provinces
                 )
         }
-        DT::datatable(df, options = list(bFilter=0))
+        if(is.na(input$date.range[1])) {
+            df %<>%
+                dplyr::filter(Date >= as.Date("2020-02-24"))
+        } else {
+            df %<>%
+                dplyr::filter(Date >= input$date.range[1])
+        }
+        if(is.na(input$date.range[2])) {
+            df %<>%
+                dplyr::filter(Date <= last.date)
+        } else {
+            df %<>%
+                dplyr::filter(Date <= input$date.range[2])
+        }
+    })
+    
+    output$analysis.table <- DT::renderDataTable({
+        DT::datatable(analysis.table(), options = list(bFilter=0))
     })
 })
