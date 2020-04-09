@@ -5631,7 +5631,6 @@
 2020-04-07,"Veneto","Verona",2856
 2020-04-07,"Veneto","Vicenza",1734
 2020-04-07,"Veneto","In fase di definizione/aggiornamento",294
-NA,"denominazione_regione","denominazione_provincia",NA
 2020-04-08,"Abruzzo","Chieti",361
 2020-04-08,"Abruzzo","L'Aquila",197
 2020-04-08,"Abruzzo","Pescara",771
@@ -5760,3 +5759,131 @@ NA,"denominazione_regione","denominazione_provincia",NA
 2020-04-08,"Veneto","Verona",2920
 2020-04-08,"Veneto","Vicenza",1782
 2020-04-08,"Veneto","In fase di definizione/aggiornamento",325
+2020-04-09,"Abruzzo","Chieti",369
+2020-04-09,"Abruzzo","L'Aquila",199
+2020-04-09,"Abruzzo","Pescara",805
+2020-04-09,"Abruzzo","Teramo",558
+2020-04-09,"Abruzzo","In fase di definizione/aggiornamento",0
+2020-04-09,"Basilicata","Matera",146
+2020-04-09,"Basilicata","Potenza",157
+2020-04-09,"Basilicata","In fase di definizione/aggiornamento",0
+2020-04-09,"Bolzano","Bolzano",1903
+2020-04-09,"Bolzano","In fase di definizione/aggiornamento",0
+2020-04-09,"Calabria","Catanzaro",173
+2020-04-09,"Calabria","Cosenza",275
+2020-04-09,"Calabria","Crotone",113
+2020-04-09,"Calabria","Reggio di Calabria",250
+2020-04-09,"Calabria","Vibo Valentia",61
+2020-04-09,"Calabria","In fase di definizione/aggiornamento",2
+2020-04-09,"Campania","Avellino",379
+2020-04-09,"Campania","Benevento",145
+2020-04-09,"Campania","Caserta",352
+2020-04-09,"Campania","Napoli",1699
+2020-04-09,"Campania","Salerno",499
+2020-04-09,"Campania","In fase di definizione/aggiornamento",270
+2020-04-09,"Emilia Romagna","Bologna",2856
+2020-04-09,"Emilia Romagna","Ferrara",563
+2020-04-09,"Emilia Romagna","Forlì-Cesena",1081
+2020-04-09,"Emilia Romagna","Modena",2867
+2020-04-09,"Emilia Romagna","Parma",2421
+2020-04-09,"Emilia Romagna","Piacenza",3020
+2020-04-09,"Emilia Romagna","Ravenna",751
+2020-04-09,"Emilia Romagna","Reggio nell'Emilia",3505
+2020-04-09,"Emilia Romagna","Rimini",1613
+2020-04-09,"Emilia Romagna","In fase di definizione/aggiornamento",0
+2020-04-09,"Friuli V.G.","Gorizia",120
+2020-04-09,"Friuli V.G.","Pordenone",513
+2020-04-09,"Friuli V.G.","Trieste",821
+2020-04-09,"Friuli V.G.","Udine",839
+2020-04-09,"Friuli V.G.","In fase di definizione/aggiornamento",6
+2020-04-09,"Lazio","Frosinone",441
+2020-04-09,"Lazio","Latina",377
+2020-04-09,"Lazio","Rieti",269
+2020-04-09,"Lazio","Roma",3026
+2020-04-09,"Lazio","Viterbo",278
+2020-04-09,"Lazio","In fase di definizione/aggiornamento",38
+2020-04-09,"Liguria","Genova",2849
+2020-04-09,"Liguria","Imperia",831
+2020-04-09,"Liguria","La Spezia",619
+2020-04-09,"Liguria","Savona",656
+2020-04-09,"Liguria","In fase di definizione/aggiornamento",65
+2020-04-09,"Lombardia","Bergamo",10043
+2020-04-09,"Lombardia","Brescia",10122
+2020-04-09,"Lombardia","Como",1605
+2020-04-09,"Lombardia","Cremona",4489
+2020-04-09,"Lombardia","Lecco",1805
+2020-04-09,"Lombardia","Lodi",2376
+2020-04-09,"Lombardia","Mantova",2277
+2020-04-09,"Lombardia","Milano",12479
+2020-04-09,"Lombardia","Monza e della Brianza",3355
+2020-04-09,"Lombardia","Pavia",2889
+2020-04-09,"Lombardia","Sondrio",654
+2020-04-09,"Lombardia","Varese",1491
+2020-04-09,"Lombardia","In fase di definizione/aggiornamento",1217
+2020-04-09,"Marche","Ancona",1481
+2020-04-09,"Marche","Ascoli Piceno",236
+2020-04-09,"Marche","Fermo",339
+2020-04-09,"Marche","Macerata",732
+2020-04-09,"Marche","Pesaro e Urbino",2044
+2020-04-09,"Marche","In fase di definizione/aggiornamento",123
+2020-04-09,"Molise","Campobasso",176
+2020-04-09,"Molise","Isernia",43
+2020-04-09,"Molise","In fase di definizione/aggiornamento",15
+2020-04-09,"Piemonte","Alessandria",2081
+2020-04-09,"Piemonte","Asti",655
+2020-04-09,"Piemonte","Biella",621
+2020-04-09,"Piemonte","Cuneo",1301
+2020-04-09,"Piemonte","Novara",1218
+2020-04-09,"Piemonte","Torino",6925
+2020-04-09,"Piemonte","Verbano-Cusio-Ossola",774
+2020-04-09,"Piemonte","Vercelli",693
+2020-04-09,"Piemonte","In fase di definizione/aggiornamento",254
+2020-04-09,"Puglia","Bari",870
+2020-04-09,"Puglia","Barletta-Andria-Trani",212
+2020-04-09,"Puglia","Brindisi",299
+2020-04-09,"Puglia","Foggia",701
+2020-04-09,"Puglia","Lecce",395
+2020-04-09,"Puglia","Taranto",206
+2020-04-09,"Puglia","In fase di definizione/aggiornamento",33
+2020-04-09,"Sardegna","Cagliari",161
+2020-04-09,"Sardegna","Nuoro",67
+2020-04-09,"Sardegna","Oristano",31
+2020-04-09,"Sardegna","Sassari",689
+2020-04-09,"Sardegna","Sud Sardegna",78
+2020-04-09,"Sardegna","In fase di definizione/aggiornamento",0
+2020-04-09,"Sicilia","Agrigento",115
+2020-04-09,"Sicilia","Caltanissetta",112
+2020-04-09,"Sicilia","Catania",662
+2020-04-09,"Sicilia","Enna",300
+2020-04-09,"Sicilia","Messina",399
+2020-04-09,"Sicilia","Palermo",346
+2020-04-09,"Sicilia","Ragusa",58
+2020-04-09,"Sicilia","Siracusa",124
+2020-04-09,"Sicilia","Trapani",116
+2020-04-09,"Sicilia","In fase di definizione/aggiornamento",0
+2020-04-09,"Toscana","Arezzo",399
+2020-04-09,"Toscana","Firenze",1961
+2020-04-09,"Toscana","Grosseto",292
+2020-04-09,"Toscana","Livorno",353
+2020-04-09,"Toscana","Lucca",979
+2020-04-09,"Toscana","Massa Carrara",790
+2020-04-09,"Toscana","Pisa",606
+2020-04-09,"Toscana","Pistoia",457
+2020-04-09,"Toscana","Prato",355
+2020-04-09,"Toscana","Siena",360
+2020-04-09,"Toscana","In fase di definizione/aggiornamento",0
+2020-04-09,"Trento","Trento",2708
+2020-04-09,"Trento","In fase di definizione/aggiornamento",0
+2020-04-09,"Umbria","Perugia",947
+2020-04-09,"Umbria","Terni",305
+2020-04-09,"Umbria","In fase di definizione/aggiornamento",46
+2020-04-09,"Valle d'Aosta","Aosta",868
+2020-04-09,"Valle d'Aosta","In fase di definizione/aggiornamento",0
+2020-04-09,"Veneto","Belluno",620
+2020-04-09,"Veneto","Padova",3134
+2020-04-09,"Veneto","Rovigo",249
+2020-04-09,"Veneto","Treviso",1906
+2020-04-09,"Veneto","Venezia",1751
+2020-04-09,"Veneto","Verona",3049
+2020-04-09,"Veneto","Vicenza",1885
+2020-04-09,"Veneto","In fase di definizione/aggiornamento",339
