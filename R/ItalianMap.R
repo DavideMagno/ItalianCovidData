@@ -12,6 +12,13 @@ FixTAG <- function(data) {
     dplyr::bind_rows(data.tag)
 }
 
+CalculateItaly <- function(data) {
+  data.italy <- data %>% 
+    dplyr::group_by(Date) %>% 
+    dplyr::summarise_if(is.numeric, sum) %>% 
+    dplyr::mutate(Region = "Italy")
+}
+
 WrangleCovidData <- function(url) {
   readr::read_csv(url(url)) %>% 
     FixTAG %>% 
@@ -32,6 +39,8 @@ GetRawData <- function() {
   covid.regions.inc <- WrangleCovidData(paste0(address,
                                                "Daily_Covis19_Italian_Data_",
                                                "Incremental.csv"))
+  covid.italy <- CalculateItaly(covid.regions)
+  covid.italy.inc <- CalculateItaly(covid.regions.inc)
   
   italy.province <- readRDS(here::here("ItalyCovidDashboard/data/gadm36_ITA_2_sp.rds"))
   italy.regions <- readRDS(here::here("ItalyCovidDashboard/data/gadm36_ITA_1_sp.rds"))
@@ -60,6 +69,7 @@ GetRawData <- function() {
   return(list(covid.province = covid.province, covid.regions = covid.regions,
               covid.province.inc = covid.province.inc, 
               covid.regions.inc = covid.regions.inc,
+              covid.italy = covid.italy, covid.italy.inc = covid.italy.inc,
               italy.province = italy.province, italy.regions = italy.regions))
 }
 
@@ -70,20 +80,28 @@ FilterAndPrepareToPlot <- function(Data, date, type, field = NA) {
     italy <- Data$italy.regions
     italy$name <- italy@data$NAME_1
     
-    covid <- Data$covid.regions %>% 
-      dplyr::filter(Date == date) 
+    covid <- Data$covid.regions 
     if(grepl("Total", field)) {
       covid <- covid %>% 
-        dplyr::select(Region, Total) 
+        dplyr::select(Date, Region, Total) 
     } else {
       covid <- covid %>%
-        dplyr::select(Region, Total = !!rlang::enquo(field)) 
+        dplyr::select(Date, Region, Total = !!rlang::enquo(field)) 
     }
-
+    
+    last.cases <- covid %>% 
+      dplyr::filter(Date == dplyr::last(Date))
+    
+    covid %<>% 
+      dplyr::filter(Date == date) 
     
   } else {
     italy <- Data$italy.province
     italy$name <- italy@data$NAME_2
+
+    last.cases <- Data$covid.province %>% 
+      dplyr::filter(Date == dplyr::last(Date)) %>% 
+      dplyr::rename("Total" = `Total Positive`) 
     
     covid <- Data$covid.province %>% 
       dplyr::filter(Date == date) %>% 
@@ -95,6 +113,12 @@ FilterAndPrepareToPlot <- function(Data, date, type, field = NA) {
     as.data.frame
   
   names(italy$cases) <- type
+  
+  italy$last.cases <- italy$cases %>% 
+    dplyr::left_join(last.cases, by = type) %>% 
+    dplyr::select_if(is.numeric) %>% 
+    unlist %>% 
+    unname
   
   italy$cases <- italy$cases %>% 
     dplyr::left_join(covid, by = type) %>% 

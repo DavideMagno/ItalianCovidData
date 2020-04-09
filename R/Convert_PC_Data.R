@@ -1,6 +1,6 @@
 library(magrittr)
 
-TreatOfficialData <- function(official.data.link, fields, new.fields) {
+TreatOfficialData <- function(official.data.link, fields, new.fields, flag = FALSE) {
   data <- readr::read_csv(url(official.data.link),
                   col_types = readr::cols(data = readr::col_character())) %>% 
     dplyr::mutate(denominazione_regione = dplyr::case_when(
@@ -15,6 +15,11 @@ TreatOfficialData <- function(official.data.link, fields, new.fields) {
     dplyr::select_at(dplyr::vars(fields))
   
   colnames(data) <- new.fields
+  
+  if(flag) {
+    data$Province %<>% 
+      stringr::str_replace("Forl“-Cesena", "Forlì-Cesena")
+  }
   
   return(data)
 }
@@ -48,7 +53,7 @@ province.new.fields <- c("Date", "Region", "Province", "Total Positive")
 
 Dati.ufficiali <- TreatOfficialData(region.file, region.fields, region.new.fields)
 Dati.ufficiali.province <- TreatOfficialData(province.file, province.fields, 
-                                             province.new.fields)
+                                             province.new.fields, TRUE)
 
 Dati.ufficiali.increment <- CalculateIncrement(Dati.ufficiali, "Region")
 Dati.ufficiali.province.increment <- CalculateIncrement(Dati.ufficiali.province, 

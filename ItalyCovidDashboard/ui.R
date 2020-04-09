@@ -45,22 +45,42 @@ navbarPage("Italy Covid", id="nav",
            ),
            tabPanel("Data Explorer",
                     fluidRow(
-                      column(4,
+                      column(3,
                              selectInput("regions", "Select the Regions of analysis", 
                                          c("All regions"= "", 
                                            unique(Data$covid.regions$Region)),
                                          multiple=TRUE)),
-                      column(4,
+                      column(3,
                              selectInput("provinces", "Select the Provinces of analysis", 
                                          c("All provinces"= ""), 
                                          multiple=TRUE)
                       ),
-                      column(4,
+                      column(3,
                              dateRangeInput("date.range", "Select the date range of analysis", 
-                                            start = last.date, 
+                                            start = as.Date("2020-02-24"), 
                                             end = last.date,
                                             min = as.Date("2020-02-24"))
+                      ),
+                      column(3,
+                             selectInput("data.field", "Select the fields to analyse",
+                                         c("All fields"= ""), 
+                                         multiple=TRUE)
                       )
+                    ),
+                    fluidRow(
+                      column(1, 
+                             p(strong("Absolute figures"))
+                      ), 
+                      column(1,
+                             checkboxInput("data_increments", "Show daily increments", value = TRUE)
+                      ),
+                      column(1,
+                             conditionalPanel(condition = "!input.data_increments",
+                                              checkboxInput("data.log", "log scale", value = TRUE))
+                      )
+                    ),
+                    fluidRow(
+                      uiOutput("plots")
                     ),
                     fluidRow(
                       hr(),
