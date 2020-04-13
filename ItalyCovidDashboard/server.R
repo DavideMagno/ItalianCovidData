@@ -2,10 +2,6 @@ shinyServer(function(input, output, session) {
     
 # GLOBAL REACTIVES ---------------------------------------------------------------
 
-    output$isItMobile <- renderText({
-        ifelse(input$isMobile, "You are on a mobile device", "You are not on a mobile device")
-    })
-    
     field <- reactive({
         if (grepl("Region", input$type)) {
             input$field
