@@ -47,7 +47,7 @@ navbarPage("Italy Covid", id="nav",
                     fluidRow(
                       column(3,
                              selectInput("regions", "Select the Regions of analysis", 
-                                         c("All regions"= "", 
+                                         c("Italy"= "", 
                                            unique(Data$covid.regions$Region)),
                                          multiple=TRUE)),
                       column(3,
@@ -63,8 +63,8 @@ navbarPage("Italy Covid", id="nav",
                       ),
                       column(3,
                              selectInput("data.field", "Select the fields to analyse",
-                                         c("All fields"= ""), 
-                                         multiple=TRUE)
+                                         c("Total" = ""),
+                                         multiple=TRUE, selected = "Total")
                       )
                     ),
                     fluidRow(
@@ -81,6 +81,14 @@ navbarPage("Italy Covid", id="nav",
                     ),
                     fluidRow(
                       uiOutput("plots")
+                    ),
+                    fluidRow(
+                      column(1, 
+                             p(strong("Relative increments"))
+                      )
+                    ),
+                    fluidRow(
+                      uiOutput("plots.ratio")
                     ),
                     fluidRow(
                       hr(),

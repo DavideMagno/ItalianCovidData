@@ -1,98 +1,80 @@
 library(magrittr)
 
-CalculateTotal <- function(data){
-  data %<>% 
-    dplyr::mutate(Total = rowSums(dplyr::select_if(., is.numeric)),
-                  Total = Total - Tests)
-  return(data)
+FilterData <- function(Data, type, italy = FALSE) {
+  if (grepl("Region", type)) {
+    if (italy) {
+      data <- Data$covid.italy
+    } else {
+      data <- Data$covid.regions
+    }
+    fixed.columns <- c("Date", "Region")
+    italy <- Data$italy.regions
+    italy$name <- italy@data$NAME_1
+  } else {
+    data <- Data$covid.province
+    fixed.columns <- c("Date", "Region", "Province")
+    italy <- Data$italy.province
+    italy$name <- italy@data$NAME_2
+  }
+  
+  return(list(data = data,
+              fixed.columns = fixed.columns,
+              italy = italy))
 }
 
-ExtractDataXRegion <- function(data, type, name, field){
-  if (is.list(type)) type <- type$id
-  if (grepl("Province", type)) {
+Extract <- function(Data, filter_by = "Italy", select_method = "Cumulative", 
+                    type = "Region", select_field = "Total", 
+                    start_date = as.Date("2020-02-24"), end_date = NULL) {
+  italy <- ifelse("Italy" %in% filter_by, TRUE, FALSE)
+  type <- ifelse("Italy" %in% filter_by, "Region", type)
+  
+  raw.data <- FilterData(Data, type, italy)
+  
+  data<- purrr::pluck(raw.data, "data") %>% 
+    dplyr::filter(grepl(paste(filter_by, collapse="|"), .[[type]]),
+                  Date >= start_date) %>% 
+    dplyr::select(purrr::pluck(raw.data, "fixed.columns"),
+                  paste(select_method, select_field, sep = "_")) 
+  
+  colnames(data) <- gsub(paste0(select_method,"_"), "", colnames(data), 
+                         fixed=TRUE)
+  
+  if (is.null(start_date)) {
     data %<>% 
-      dplyr::filter(grepl(name, !!rlang::sym(type))) %>% 
-      dplyr::select(Date, Total = `Total Positive`)
-  } else {
-    if (grepl("Italy", name)){
-      data %<>%
-        dplyr::group_by(Date) %>% 
-        dplyr::summarise_if(is.numeric, sum)
-    } else {
-      data %<>% 
-        dplyr::filter(grepl(name, !!rlang::sym(type)))
-    }
-    data %<>% 
-      dplyr::select(Date, Total = !!rlang::enquo(field), Tests)
-      
-  }
-  return(data)
-} 
-
-# AnalisiRegione <- function(inc_data, cum_data, regione, field, average.window){
-#   inc_data <- ExtractDataXRegion(inc_data, regione, field)
-#   cum_data <- ExtractDataXRegion(cum_data, regione, field)
-#   final.analysis <- cum_data %>% 
-#     dplyr::left_join(inc_data, by = "Date") %>% 
-#     dplyr::select(-Tests.x) %>% 
-#     dplyr::filter(Total.x != 0) %>% 
-#     dplyr::rename(Tests = Tests.y,
-#                   `Cumulative Total` = Total.x,
-#                   `Incremental Total` = Total.y) %>% 
-#     dplyr::mutate(Average.tests = slider::slide_dbl(.$Tests, ~mean(.x), 
-#                                                     .before = average.window)) %>% 
-#     dplyr::mutate(`Ratio New Cases` = `Incremental Total`/`Cumulative Total`) %>% 
-#     dplyr::mutate(`Ratio New Cases x test` = `Incremental Total`/Tests) %>%
-#     dplyr::mutate(`Ratio New Cases x average test` = `Incremental Total`/Average.tests) %>%
-#     dplyr::arrange(Date) 
-#   
-#   return(final.analysis)
-# }
-
-PrepDataExplorer <- function(data, regions, provinces, data.fields, date.range) {
-  if(is.null(provinces)) {
-    if(is.null(regions)) {
-      df <- data %>% 
-        dplyr::group_by(Date) %>% 
-        dplyr::summarise_if(is.numeric, sum) %>% 
-        dplyr::mutate(Region = "Italy")
-    } else {
-      df <- data %>%
-        dplyr::filter(
-          is.null(regions) | Region %in% regions
-        )
-    }
-    if(is.null(data.fields)) {
-      df %<>%
-        dplyr::select(Date, Region, Hospitalised, `In ICU`, 
-                      `Home Isolation`, Healed, Dead, Total, Tests)
-    } else {
-      df %<>%
-        dplyr::select_at(dplyr::vars("Date", "Region", data.fields))
-    }
-  } else {
-    df <- data %>%
-      dplyr::filter(
-        is.null(regions)     | Region %in% regions,
-        is.null(provinces)   | Province %in% provinces
-      ) %>% 
-      dplyr::rename("Total" = "Total Positive")
-  }
-  if(is.na(date.range[1])) {
-    df %<>%
       dplyr::filter(Date >= as.Date("2020-02-24"))
-  } else {
-    df %<>%
-      dplyr::filter(Date >= date.range[1])
   }
-  if(is.na(date.range[2])) {
-    df %<>%
-      dplyr::filter(Date <= last.date)
-  } else {
-    df %<>%
-      dplyr::filter(Date <= date.range[2])
+  
+  if (!is.null(end_date)) {
+    data %<>% 
+      dplyr::filter(Date <= end_date)
   }
+  
+  return(data)
 }
 
-
-
+PrepareDataForExtraction <- function(regions, provinces, date.range, last.date,
+                                     data.field) {
+  if (is.null(provinces)) { 
+    if (is.null(regions)) {
+      filter_by <- "Italy"
+    } else {
+      filter_by <- regions
+    }
+    type <- "Region"
+  } else {
+    filter_by <- provinces
+    type <- "Province"
+  }
+  start_date <- ifelse(is.null(date.range[1]), 
+                       as.Date("2020-02-24"), date.range[1])
+  end_date <- ifelse(is.null(date.range[2]), 
+                     last.date, date.range[2])
+  if (is.null(data.field)) {
+    data.field <- "Total"
+  } else {
+    data.field <- data.field
+  }
+  
+  return(list(filter_by = filter_by, type = type, start_date = start_date,
+              end_date = end_date, data.field = data.field))
+}

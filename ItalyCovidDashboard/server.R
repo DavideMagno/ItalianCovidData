@@ -5,7 +5,9 @@ source(here::here("R/MultipleGraphs.R"))
 library(shiny)
 
 shinyServer(function(input, output, session) {
-    
+
+# GLOBAL REACTIVES ---------------------------------------------------------------
+
     field <- reactive({
         if (grepl("Region", input$type)) {
             input$field
@@ -15,12 +17,20 @@ shinyServer(function(input, output, session) {
     })
     
     logscale <- reactive({if(input$log) "log" else "linear"})
-    data.logscale <- reactive({if(input$data_increments | !input$data.log) "linear" else "log"})
+    data.logscale <- reactive({if(input$data_increments | !input$data.log) 
+        "linear" else "log"
+        })
     
-    # Map Setup
+    increments <- reactive({
+        if(input$data_increments) "Increment" else "Cumulative"
+    })
     
-    ItalyMap <- reactive({FilterAndPrepareToPlot(Data, input$date, input$type, 
-                                                 input$field)})
+
+# MAP ---------------------------------------------------------------------
+
+    ItalyMap <- reactive({
+        FilterAndPrepareToPlot(Data, input$date, input$type, field())
+        })
     
     output$map <- leaflet::renderLeaflet({
         leaflet::leaflet() %>% 
@@ -28,48 +38,18 @@ shinyServer(function(input, output, session) {
             leaflet::setView(10, 41.879, zoom = 5)})
     
     observe({
-        italy <- ItalyMap()
-        #create a color palette to fill the polygons
-        if (grepl("Region", input$type)) {
-            bin <- c(1, quantile(italy$last.cases, 
-                                   c(0, 0.025, 0.05, 0.15, 0.25, 0.3, 0.65, 0.85, 1)))
-        } else {
-            bin <- c(1, quantile(italy$last.cases, 
-                                 c(0, 0.15, 0.30, 0.45, 0.55, 0.65, 0.85, 0.97, 1)))
-        }
-        if (grepl("Healed", field())) {
-            pal <- leaflet::colorBin(c("#D6FFDA", "#B7EBBB", "#99D89C", 
-                                       "#7BC57D", "#5CB25D", "#3E9F3E", 
-                                       "#208C1F", "#027800"),
-                                     domain = italy$cases,
-                                     bins = bin,
-                                     na.color = "#ffffff")
-        } else {
-            pal <- leaflet::colorBin(c("#F6EEDB", "#ffe59c", "#f4c78a", 
-                                       "#e9aa78", "#df8d66", "#d47054", 
-                                       "#ca5342","#9A0A10"),
-                                     domain = italy$cases,
-                                     bins = bin,
-                                     na.color = "#ffffff")
-        }
-        
-        
-        #create a pop up (onClick)
-        polygon_popup <- paste0(paste0("<strong>",input$type,": </strong>"), 
-                                italy$name, "<br>", 
-                                paste0("<strong>", field()," cases: </strong>"), 
-                                italy$cases)
-        leaflet::leafletProxy("map", data = italy, session) %>% 
+        map.features <- DrawProxyMap(ItalyMap(), input$type, field())
+        leaflet::leafletProxy("map", data = ItalyMap(), session) %>% 
             leaflet::clearShapes(.) %>% 
             leaflet::removeControl("legend") %>% 
-            leaflet::addPolygons(fillColor= ~pal(cases),
+            leaflet::addPolygons(fillColor= ~map.features$pal(cases),
                                  fillOpacity = 0.5, 
                                  weight = 2, 
                                  color = "grey",
-                                 popup = polygon_popup,
+                                 popup = map.features$polygon_popup,
                                  label = ~name,
                                  layerId = ~name) %>%
-            leaflet::addLegend("bottomleft", pal = pal, 
+            leaflet::addLegend("bottomleft", pal = map.features$pal, 
                                values = ~cases,
                                labFormat = leaflet::labelFormat(digits = 0),
                                opacity = 0.5,
@@ -77,6 +57,9 @@ shinyServer(function(input, output, session) {
                                layerId = "legend")
     })
     
+
+# MAP GRAPH ---------------------------------------------------------------
+
     selection <- reactiveValues(n = NA)
     
     observeEvent(input$map_shape_click, {
@@ -93,23 +76,8 @@ shinyServer(function(input, output, session) {
     
     
     plot.data <- reactive({
-        if (grepl("Region", input$type)) {
-            field <- field()
-        } else {
-            field <- "Total"
-        }
-        if (is.na(selection$n)) {
-            plot.data <- ExtractDataXRegion(Data$covid.regions, "Region",
-                                            name(), field)
-        } else {
-            if(grepl("Region", input$type)){
-                data <- Data$covid.regions
-            } else {
-                data <- Data$covid.province
-            }
-            plot.data <- ExtractDataXRegion(data, input$type, name(), field())
-        }
-        return(plot.data)
+        Extract(Data = Data, filter_by = name(), type = input$type, 
+                select_field = field())
     })
     
     observe({
@@ -122,7 +90,7 @@ shinyServer(function(input, output, session) {
             plot.data() %>%
                 as.data.frame() %>% 
                 plotly::plot_ly(x = ~Date) %>%
-                plotly::add_trace(y = ~Total, type = "scatter",
+                plotly::add_trace(y = ~get(field()), type = "scatter",
                                   mode = "lines+markers") %>% 
                 plotly::layout(
                     title = paste("Dynamic in", name()),
@@ -132,9 +100,9 @@ shinyServer(function(input, output, session) {
                 plotly::config(displayModeBar = FALSE)
         })
     })
-    
-    # =========== DATA ANALYSIS ===========
-    
+
+# DATA ANALYSIS -----------------------------------------------------------
+
     observe({
         provinces <- if (is.null(input$regions)) character(0) else {
             dplyr::filter(Data$covid.province, Region %in% input$regions) %>%
@@ -161,36 +129,41 @@ shinyServer(function(input, output, session) {
     })
     
     analysis.table <- reactive({
-        if(is.null(input$provinces)) {
-            if(input$data_increments) {
-                data <- Data$covid.regions.inc
-            } else {
-                data <- Data$covid.regions
-            }
-        } else {
-            if(input$data_increments) {
-                data <- Data$covid.province.inc
-            } else {
-                data <- Data$covid.province
-            }
-        }
-        PrepDataExplorer(data, input$regions, input$provinces, input$data.field,
-                         input$date.range)
+        input.data <- PrepareDataForExtraction(input$regions, input$provinces, 
+                                         input$date.range, last.date, 
+                                         input$data.field) 
+        
+        data <- Extract(Data, filter_by = input.data$filter_by, 
+                        select_method = increments(), type = input.data$type, 
+                        select_field = input.data$data.field, 
+                        start_date = input.data$start_date, 
+                        end_date = input.data$end_date)
+        
+        return(list(input.data = input.data, data = data))
+    })
+    
+    output$plots <- renderUI({
+        get_plot_output_list_div(analysis.table()$input.data$data.field, 
+                                 analysis.table()$data,
+                                 data.logscale())
     })
     
     observe({
-        if(is.null(input$data.field)) {
-            data.field <- "Total"
-        } else {
-            data.field <- input$data.field
-        }
-        output$plots <- renderUI({get_plot_output_list_div(data.field, 
-                                                           analysis.table(),
-                                                           data.logscale())})
+        data <- Extract(Data, filter_by = analysis.table()$input.data$filter_by, 
+                        select_method = "Ratio", 
+                        type = analysis.table()$input.data$type, 
+                        select_field = analysis.table()$input.data$data.field, 
+                        start_date = analysis.table()$input.data$start_date, 
+                        end_date = analysis.table()$input.data$end_date)
+        
+        output$plots.ratio <- renderUI({
+            get_plot_output_list_div(analysis.table()$input.data$data.field, 
+                                     data,"linear", TRUE)
+            })
     })
     
     output$analysis.table <- DT::renderDataTable({
-        DT::datatable(analysis.table() %>% 
+        DT::datatable(analysis.table()$data %>% 
                           dplyr::arrange(desc(Date)), 
                       rownames = FALSE,
                       options = list(bFilter=0,autoWidth = TRUE,

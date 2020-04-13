@@ -29,14 +29,14 @@ get_plot_bootstrapjs_div <- function(plot_object_list, id_prefix) {
   return(plot_output_list_div)
 }
 
-get_plot_object_list <- function(data.field, data, logscale) {
+get_plot_object_list <- function(data.field, data, logscale, return.flag) {
   result_plot_list <- purrr::map(data.field, function(i) {
     if ("Province" %in% colnames(data)) {
       colour <- "Province"
     } else {
       colour <- "Region"
     }
-    plotly::plot_ly(data) %>%  
+    pp <- plotly::plot_ly(data) %>%  
       plotly::add_trace(x = ~Date, y = ~get(i), color = ~get(colour), 
                         type = "scatter",
                         mode = "lines+markers") %>% 
@@ -44,12 +44,20 @@ get_plot_object_list <- function(data.field, data, logscale) {
                      yaxis = list(type = logscale,
                                   title = i)) %>% 
       plotly::config(displayModeBar = FALSE)
+    
+    if(return.flag) {
+      pp %<>% 
+        plotly::layout(yaxis = list(tickformat = ".2%"))
+    }
+    return(pp)
   })
   return(result_plot_list)
 }
 
-get_plot_output_list_div <- function(data.field, data, logscale = FALSE) {
-  plot_object_list <- get_plot_object_list(data.field, data, logscale)
+get_plot_output_list_div <- function(data.field, data, logscale = FALSE,
+                                     return.flag = FALSE) {
+  plot_object_list <- get_plot_object_list(data.field, data, logscale, 
+                                           return.flag)
   plot_output_div <- get_plot_bootstrapjs_div(plot_object_list, 'ui_plot')
   return(plot_output_div)
 }
