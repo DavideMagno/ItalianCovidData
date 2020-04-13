@@ -1,13 +1,11 @@
-source(here::here("R/ItalianMap.R"))
-source(here::here("R/Analysis.R"))
-source(here::here("R/MultipleGraphs.R"))
-
-library(shiny)
-
 shinyServer(function(input, output, session) {
-
+    
 # GLOBAL REACTIVES ---------------------------------------------------------------
 
+    output$isItMobile <- renderText({
+        ifelse(input$isMobile, "You are on a mobile device", "You are not on a mobile device")
+    })
+    
     field <- reactive({
         if (grepl("Region", input$type)) {
             input$field
@@ -35,7 +33,7 @@ shinyServer(function(input, output, session) {
     output$map <- leaflet::renderLeaflet({
         leaflet::leaflet() %>% 
             leaflet::addProviderTiles("Esri.WorldTerrain") %>% 
-            leaflet::setView(10, 41.879, zoom = 5)})
+            leaflet::setView(10, 41.879, zoom = 6)})
     
     observe({
         map.features <- DrawProxyMap(ItalyMap(), input$type, field())
@@ -80,6 +78,12 @@ shinyServer(function(input, output, session) {
                 select_field = field())
     })
     
+    best.worst.data <- reactive({
+        Extract(Data = Data, filter_by = "", type = input$type, 
+                select_field = field(), select_method = "Ratio", 
+                start_date = input$date, end_date = input$date)
+    })
+    
     observe({
         if (grepl("Total", field())) {
             text <- paste(field(), "Positive Cases")
@@ -96,6 +100,42 @@ shinyServer(function(input, output, session) {
                     title = paste("Dynamic in", name()),
                     yaxis = list(title = text,
                                  type = logscale())
+                ) %>%
+                plotly::config(displayModeBar = FALSE)
+        })
+    })
+    
+    observe({
+        if (grepl("Province", input$type)) {
+            wrangle.data <- best.worst.data() %>% 
+                dplyr::select(input$type, field()) %>% 
+                na.omit %>% 
+                dplyr::filter(!grepl("definizione", .$Province)) %>% 
+                dplyr::arrange_at(dplyr::desc(dplyr::vars(field()))) 
+        } else {
+            wrangle.data <- best.worst.data()
+        }
+        
+        wrangle.data %<>% 
+            dplyr::top_n(10) %>% 
+            dplyr::mutate(Group = "Top 10 changes") %>% 
+            dplyr::bind_rows(wrangle.data %>% 
+                                 dplyr::top_n(-10) %>% 
+                                 dplyr::mutate(Group = "Lower 10 changes"))
+        output$best.worst.plot <- plotly::renderPlotly({
+            wrangle.data %>% 
+                dplyr::mutate(!!input$type := forcats::fct_reorder(.[[input$type]], 
+                                                                  .[[field()]])) %>% 
+                plotly::plot_ly(y = ~get(input$type), color = ~Group) %>%
+                plotly::add_trace(x = ~get(field()), type = "bar",
+                                  orientation = 'h') %>% 
+                plotly::layout(
+                    title = paste0("Daily change at ", input$date),
+                    yaxis = list(title = input$type),
+                    xaxis = list(tickformat = ".2%", 
+                                 title = paste0("% change on day of ", field())),
+                    font = list(size = 10),
+                    legend = list(orientation = 'h')
                 ) %>%
                 plotly::config(displayModeBar = FALSE)
         })
@@ -162,7 +202,7 @@ shinyServer(function(input, output, session) {
             })
     })
     
-    output$analysis.table <- DT::renderDataTable({
+    output$analysis_table <- DT::renderDataTable({
         DT::datatable(analysis.table()$data %>% 
                           dplyr::arrange(desc(Date)), 
                       rownames = FALSE,

@@ -1,46 +1,56 @@
-#
-# This is the user-interface definition of a Shiny web application. You can
-# run the application by clicking 'Run App' above.
-#
-# Find out more about building applications with Shiny here:
-#
-#    http://shiny.rstudio.com/
-#
-
 library(shiny)
+library(shinyjs)
 library(billboarder)
 library(shinycssloaders)
 
 # Define UI for application that draws a histogram
 navbarPage("Italy Covid", id="nav",
            tabPanel("Interactive Map", 
-                    div(class = "outer",
-                        tags$head(
-                          # Include our custom CSS
-                          includeCSS(here::here("ItalyCovidDashboard/styles.css"))
-                        ),
-                        leaflet::leafletOutput("map", height = "100%"),
+                    fluidRow(
+                      column(4,
+                             dateInput("date", "Select the date for the map", 
+                                       last.date, 
+                                       min = as.Date("2020-02-24")),
+                             align="center"
+                             ),
+                      column(4,
+                             radioButtons("type", "Type of data", 
+                                          choices = c("Region", "Province"),
+                                          selected = "Region"),
+                             align="center"
+                             ),
+                      column(4,
+                             conditionalPanel(condition = "input.type == 'Region'",
+                                              selectInput("field", "Field for the map", 
+                                                          choices = c("Hospitalised", "In ICU", "Home Isolation",
+                                                                      "Dead", "Healed", "Total"),
+                                                          selected = "Total")),
+                             align="center")
+                    ),
+                    fluidRow(
+                      column(12,
+                             includeCSS(here::here("ItalyCovidDashboard/styles.css")),
+                        # tags$head(
+                        #   # Include our custom CSS
+                        #   includeCSS(here::here("ItalyCovidDashboard/styles.css"))
+                        # ),
+                        leaflet::leafletOutput("map", height = 720),
                         absolutePanel(id = "controls", class = "panel panel-default", 
-                                      fixed = FALSE, top = 60, draggable = TRUE, 
-                                      left = "auto", right = 20, bottom = "auto",
+                                      fixed = FALSE, top = 15, draggable = TRUE, 
+                                      left = "auto", right = 60, bottom = "auto",
                                       width = 330, height = "auto", cursor = "default",
-                                      # HTML('<checkbox data-toggle="collapse" data-target="#demo">Collapse</checkbox>'),
-                                      # tags$div(id = 'demo',  class="collapse",
                                       p(), p(),
-                                      dateInput("date", "Select the date for the map", 
-                                                last.date, 
-                                                min = as.Date("2020-02-24")),
-                                      radioButtons("type", "Type of data", 
-                                                   choices = c("Region", "Province"),
-                                                   selected = "Region"),
-                                      conditionalPanel(condition = "input.type == 'Region'",
-                                                       selectInput("field", "Field for the map", 
-                                                                   choices = c("Hospitalised", "In ICU", "Home Isolation",
-                                                                               "Dead", "Healed", "Total"),
-                                                                   selected = "Total")),
                                       plotly::plotlyOutput("dynamic", height = "300px"),
                                       checkboxInput("log", "Log scale", value = TRUE)
+                        ),
+                        absolutePanel(id = "bestworst", class = "panel panel-default", 
+                                      fixed = FALSE, top = 15, draggable = TRUE, 
+                                      left = 60, right = "auto", bottom = "auto",
+                                      width = 400, height = "auto", cursor = "default",
+                                      p(), p(),
+                                      plotly::plotlyOutput("best.worst.plot", height = "450px")
                         )
+                      )
                     )
            ),
            tabPanel("Data Explorer",
@@ -49,22 +59,26 @@ navbarPage("Italy Covid", id="nav",
                              selectInput("regions", "Select the Regions of analysis", 
                                          c("Italy"= "", 
                                            unique(Data$covid.regions$Region)),
-                                         multiple=TRUE)),
+                                         multiple=TRUE),
+                             align="center"),
                       column(3,
                              selectInput("provinces", "Select the Provinces of analysis", 
                                          c("All provinces"= ""), 
-                                         multiple=TRUE)
+                                         multiple=TRUE),
+                             align="center"
                       ),
                       column(3,
                              dateRangeInput("date.range", "Select the date range of analysis", 
                                             start = as.Date("2020-02-24"), 
                                             end = last.date,
-                                            min = as.Date("2020-02-24"))
+                                            min = as.Date("2020-02-24")),
+                             align="center"
                       ),
                       column(3,
                              selectInput("data.field", "Select the fields to analyse",
                                          c("Total" = ""),
-                                         multiple=TRUE, selected = "Total")
+                                         multiple=TRUE, selected = "Total"),
+                             align="center"
                       )
                     ),
                     fluidRow(
@@ -92,7 +106,7 @@ navbarPage("Italy Covid", id="nav",
                     ),
                     fluidRow(
                       hr(),
-                      DT::dataTableOutput("analysis.table")
+                      DT::dataTableOutput("analysis_table")
                     )
            )
 )

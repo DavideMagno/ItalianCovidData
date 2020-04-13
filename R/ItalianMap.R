@@ -1,5 +1,5 @@
 ExtractData <- function(italy, data, type) {
-  italy$cases %<>% 
+  italy$area %<>% 
     dplyr::left_join(data, by = type) %>% 
     dplyr::select_if(is.numeric) %>% 
     unlist %>% 
@@ -8,7 +8,6 @@ ExtractData <- function(italy, data, type) {
 
 FilterAndPrepareToPlot <- function(Data, date, type, field = NA) {
   date <- as.Date(date, format = "%c")
-  # if (is.na(field)) field <- "Total"
   raw.data <- FilterData(Data, type)
   
   italy <- purrr::pluck(raw.data, "italy")
@@ -23,10 +22,7 @@ FilterAndPrepareToPlot <- function(Data, date, type, field = NA) {
   covid.given.date <- covid %<>% 
     dplyr::filter(Date == date) 
   
-  italy$cases <- italy$name %>% 
-    as.data.frame
-  
-  names(italy$cases) <- type
+  italy$area <- tibble::tibble(!!type := italy$name)
   
   italy$last.cases <- ExtractData(italy, covid.last.cases, type)
   italy$cases <- ExtractData(italy, covid.given.date, type)

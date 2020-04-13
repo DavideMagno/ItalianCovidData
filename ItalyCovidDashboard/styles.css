@@ -22,7 +22,25 @@ h1, h2, h3, h4 { font-weight: 350; }
 #controls {
   /* Appearance */
   background-color: white;
-  padding: 0 20px 20px 20px;
+  padding: 20px 20px 20px 20px;
+  cursor: move;
+  /* Fade out while not hovering */
+  opacity: 0.65;
+  /*zoom: 0.9;*/
+  transition: opacity 500ms 1s;
+  display: block;
+}
+
+#controls:hover {
+  /* Fade in while hovering */
+  opacity: 0.95;
+  transition-delay: 0;
+}
+
+#bestworst {
+  /* Appearance */
+  background-color: white;
+  padding: 20px 20px 20px 20px;
   cursor: move;
   /* Fade out while not hovering */
   opacity: 0.65;
@@ -30,10 +48,16 @@ h1, h2, h3, h4 { font-weight: 350; }
   transition: opacity 500ms 1s;
 }
 
-#controls:hover {
+#bestworst:hover {
   /* Fade in while hovering */
   opacity: 0.95;
   transition-delay: 0;
+} 
+
+@media screen and (max-width: 768px) {
+#controls{display: none;}
+#bestworst{display: none;}
+#analysis_table{display: none;}
 }
 
 /* Position and style citation */
