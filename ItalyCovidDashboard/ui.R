@@ -10,7 +10,8 @@ navbarPage("Italy Covid", id="nav",
                       column(4,
                              dateInput("date", "Select the date for the map", 
                                        last.date, 
-                                       min = as.Date("2020-02-24")),
+                                       min = as.Date("2020-02-24"),
+                                       max = last.date),
                              align="center"
                              ),
                       column(4,
@@ -34,7 +35,7 @@ navbarPage("Italy Covid", id="nav",
                         #   # Include our custom CSS
                         #   includeCSS(here::here("ItalyCovidDashboard/styles.css"))
                         # ),
-                        leaflet::leafletOutput("map", height = 720),
+                        leaflet::leafletOutput("map", height = 710),
                         absolutePanel(id = "controls", class = "panel panel-default", 
                                       fixed = FALSE, top = 15, draggable = TRUE, 
                                       left = "auto", right = 60, bottom = "auto",
@@ -71,7 +72,8 @@ navbarPage("Italy Covid", id="nav",
                              dateRangeInput("date.range", "Select the date range of analysis", 
                                             start = as.Date("2020-02-24"), 
                                             end = last.date,
-                                            min = as.Date("2020-02-24")),
+                                            min = as.Date("2020-02-24"),
+                                            max = last.date),
                              align="center"
                       ),
                       column(3,
@@ -103,6 +105,24 @@ navbarPage("Italy Covid", id="nav",
                     ),
                     fluidRow(
                       uiOutput("plots.ratio")
+                    ),
+                    
+                    fluidRow(
+                      column(2, 
+                             conditionalPanel(condition = "output.provinces == true",
+                                              p(strong("Increments compared to Tests"))
+                             )
+                      ),
+                      column(3, 
+                             conditionalPanel(condition = "output.provinces == true",
+                                              p(paste("Number of tests used is the",
+                                                      "linearly decreasing weighted",
+                                                      "average over previous 7 days"))
+                             )
+                      )
+                    ),
+                    fluidRow(
+                      uiOutput("tests.ratio")
                     ),
                     fluidRow(
                       hr(),

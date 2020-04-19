@@ -36,10 +36,19 @@ get_plot_object_list <- function(data.field, data, logscale, return.flag) {
     } else {
       colour <- "Region"
     }
+    
+    rmean7 <- data %>% 
+      dplyr::group_by_at(dplyr::vars(colour)) %>%  
+      dplyr::mutate_if(is.numeric,
+                       dplyr::funs(stats::filter(., rep(1/7, 7), side=2))) 
+    
     pp <- plotly::plot_ly(data) %>%  
       plotly::add_trace(x = ~Date, y = ~get(i), color = ~get(colour), 
                         type = "scatter",
-                        mode = "lines+markers") %>% 
+                        mode = "lines+markers", opacity = 0.2,
+                        showlegend = FALSE) %>% 
+      plotly::add_lines(data = rmean7, x = ~Date, y = ~get(i), 
+                        color = ~get(colour)) %>% 
       plotly::layout(legend = list(orientation = 'h'),
                      yaxis = list(type = logscale,
                                   title = i)) %>% 

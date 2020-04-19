@@ -30,14 +30,29 @@ Extract <- function(Data, filter_by = "Italy", select_method = "Cumulative",
   
   raw.data <- FilterData(Data, type, italy)
   
-  data<- purrr::pluck(raw.data, "data") %>% 
+  data <- purrr::pluck(raw.data, "data") %>% 
     dplyr::filter(grepl(paste(filter_by, collapse="|"), .[[type]]),
-                  Date >= start_date) %>% 
-    dplyr::select(purrr::pluck(raw.data, "fixed.columns"),
-                  paste(select_method, select_field, sep = "_")) 
+                  Date >= start_date)
   
-  colnames(data) <- gsub(paste0(select_method,"_"), "", colnames(data), 
-                         fixed=TRUE)
+  if(grepl("Tests", select_method) & !grepl("Province",type)) {
+    data %<>%
+      dplyr::select(purrr::pluck(raw.data, "fixed.columns"),
+                    paste("Increment", select_field, sep = "_"),
+                    "Increment_Tests") %>% 
+      dplyr::group_by(Region) %>% 
+      dplyr::mutate_if(is.numeric, dplyr::funs(./WMA(Increment_Tests, 7, 
+                                                     wts = seq(7,1))))
+    
+    colnames(data) <- gsub(paste0("Increment_"), "", colnames(data), 
+                           fixed=TRUE)
+  } else {
+    data %<>%
+      dplyr::select(purrr::pluck(raw.data, "fixed.columns"),
+                    paste(select_method, select_field, sep = "_")) 
+    
+    colnames(data) <- gsub(paste0(select_method,"_"), "", colnames(data), 
+                           fixed=TRUE)
+  }
   
   if (is.null(start_date)) {
     data %<>% 
@@ -69,7 +84,7 @@ PrepareDataForExtraction <- function(regions, provinces, date.range, last.date,
                        as.Date("2020-02-24"), date.range[1])
   end_date <- ifelse(is.null(date.range[2]), 
                      last.date, date.range[2])
-  if (is.null(data.field)) {
+  if (is.null(data.field) | !is.null(provinces)) {
     data.field <- "Total"
   } else {
     data.field <- data.field

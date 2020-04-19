@@ -151,6 +151,11 @@ shinyServer(function(input, output, session) {
                              selected = stillSelected, server = TRUE)
     })
     
+    output$provinces <- reactive({
+        return(is.null(input$provinces))
+    })
+    outputOptions(output, 'provinces', suspendWhenHidden = FALSE)
+    
     observe({
         fields <- if (is.null(input$provinces)) {
             c("Hospitalised", 
@@ -196,6 +201,22 @@ shinyServer(function(input, output, session) {
             get_plot_output_list_div(analysis.table()$input.data$data.field, 
                                      data,"linear", TRUE)
             })
+    })
+    
+    output$tests.ratio <- renderUI({
+        if (is.null(input$provinces)) {
+            data <- Extract(Data, filter_by = analysis.table()$input.data$filter_by, 
+                            select_method = "Tests", 
+                            type = analysis.table()$input.data$type, 
+                            select_field = analysis.table()$input.data$data.field, 
+                            start_date = analysis.table()$input.data$start_date, 
+                            end_date = analysis.table()$input.data$end_date)
+            
+            get_plot_output_list_div(analysis.table()$input.data$data.field, 
+                                     data,"linear", TRUE)
+        } else {
+            return(NULL)
+        }
     })
     
     output$analysis_table <- DT::renderDataTable({
