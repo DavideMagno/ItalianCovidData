@@ -39,9 +39,11 @@ Extract <- function(Data, filter_by = "Italy", select_method = "Cumulative",
       dplyr::select(purrr::pluck(raw.data, "fixed.columns"),
                     paste("Increment", select_field, sep = "_"),
                     "Increment_Tests") %>% 
+      dplyr::mutate(TestsForRatio = Increment_Tests) %>% 
       dplyr::group_by(Region) %>% 
-      dplyr::mutate_if(is.numeric, dplyr::funs(./TTR::WMA(Increment_Tests, 7, 
-                                                     wts = seq(7,1))))
+      dplyr::mutate_if(is.numeric, dplyr::funs(./TTR::WMA(TestsForRatio, 7, 
+                                                          wts = seq(7,1)))) %>% 
+      dplyr::select(-TestsForRatio)
     
     colnames(data) <- gsub(paste0("Increment_"), "", colnames(data), 
                            fixed=TRUE)
@@ -63,7 +65,6 @@ Extract <- function(Data, filter_by = "Italy", select_method = "Cumulative",
     data %<>% 
       dplyr::filter(Date <= end_date)
   }
-  
   return(data)
 }
 
