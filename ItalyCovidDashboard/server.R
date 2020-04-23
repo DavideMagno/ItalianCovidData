@@ -29,7 +29,7 @@ shinyServer(function(input, output, session) {
     output$map <- leaflet::renderLeaflet({
         leaflet::leaflet() %>% 
             leaflet::addProviderTiles("Esri.WorldTerrain") %>% 
-            leaflet::setView(10, 41.879, zoom = 6)})
+            leaflet::setView(12, 41.879, zoom = 5.7)})
     
     observe({
         map.features <- DrawProxyMap(ItalyMap(), input$type, field())
@@ -129,9 +129,10 @@ shinyServer(function(input, output, session) {
                     title = paste0("Daily change at ", input$date),
                     yaxis = list(title = input$type),
                     xaxis = list(tickformat = ".2%", 
-                                 title = paste0("% change on day of ", field())),
-                    font = list(size = 10),
-                    legend = list(orientation = 'h')
+                                 title = " "),
+                    font = list(size = 11),
+                    legend = list(orientation = 'h',
+                                  yanchor = "center")
                 ) %>%
                 plotly::config(displayModeBar = FALSE)
         })

@@ -39,15 +39,14 @@ navbarPage("Italy Covid", id="nav",
                         absolutePanel(id = "controls", class = "panel panel-default", 
                                       fixed = FALSE, top = 15, draggable = TRUE, 
                                       left = "auto", right = 60, bottom = "auto",
-                                      width = 330, height = "auto", cursor = "default",
+                                      width = 400, height = 400, cursor = "default",
                                       p(), p(),
                                       plotly::plotlyOutput("dynamic", height = "300px"),
                                       checkboxInput("log", "Log scale", value = TRUE)
                         ),
                         absolutePanel(id = "bestworst", class = "panel panel-default", 
                                       fixed = FALSE, top = 15, draggable = TRUE, 
-                                      left = 60, right = "auto", bottom = "auto",
-                                      width = 400, height = "auto", cursor = "default",
+                                      left = 100, width = 400, cursor = "default",
                                       p(), p(),
                                       plotly::plotlyOutput("best.worst.plot", height = "450px")
                         )

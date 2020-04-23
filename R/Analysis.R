@@ -40,7 +40,7 @@ Extract <- function(Data, filter_by = "Italy", select_method = "Cumulative",
                     paste("Increment", select_field, sep = "_"),
                     "Increment_Tests") %>% 
       dplyr::group_by(Region) %>% 
-      dplyr::mutate_if(is.numeric, dplyr::funs(./WMA(Increment_Tests, 7, 
+      dplyr::mutate_if(is.numeric, dplyr::funs(./TTR::WMA(Increment_Tests, 7, 
                                                      wts = seq(7,1))))
     
     colnames(data) <- gsub(paste0("Increment_"), "", colnames(data), 

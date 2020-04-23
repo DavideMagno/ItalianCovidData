@@ -33,11 +33,13 @@ FilterAndPrepareToPlot <- function(Data, date, type, field = NA) {
 DrawProxyMap <- function(italy, type, field) {
   #create a color palette to fill the polygons
   if (grepl("Region", type)) {
-    bin <- c(1, quantile(italy$last.cases, 
-                         c(0, 0.025, 0.05, 0.15, 0.25, 0.3, 0.65, 0.85, 1)))
+    bin <- c(1, unique(quantile(italy$last.cases, 
+                                c(0, 0.025, 0.05, 0.15, 0.25, 0.3, 0.65, 0.85, 
+                                  1))))
   } else {
-    bin <- c(1, quantile(italy$last.cases, 
-                         c(0, 0.15, 0.30, 0.45, 0.55, 0.65, 0.85, 0.97, 1)))
+    bin <- c(1, unique(quantile(italy$last.cases, 
+                                c(0, 0.15, 0.30, 0.45, 0.55, 0.65, 0.85, 0.97, 
+                                  1))))
   }
   if (grepl("Healed", field)) {
     pal <- leaflet::colorBin(c("#D6FFDA", "#B7EBBB", "#99D89C", 
