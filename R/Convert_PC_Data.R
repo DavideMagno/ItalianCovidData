@@ -53,7 +53,8 @@ province.new.fields <- c("Date", "Region", "Province", "Total Positive")
 
 Dati.ufficiali <- TreatOfficialData(region.file, region.fields, region.new.fields)
 Dati.ufficiali.province <- TreatOfficialData(province.file, province.fields, 
-                                             province.new.fields, TRUE)
+                                             province.new.fields, TRUE) %>%
+  dplyr::distinct(.keep_all = TRUE)
 
 Dati.ufficiali.increment <- CalculateIncrement(Dati.ufficiali, "Region")
 Dati.ufficiali.province.increment <- CalculateIncrement(Dati.ufficiali.province, 
