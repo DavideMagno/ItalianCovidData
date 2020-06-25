@@ -15615,3 +15615,152 @@
 2020-06-24,"Veneto","Verona",5123
 2020-06-24,"Veneto","Vicenza",2860
 2020-06-24,"Veneto","In fase di definizione/aggiornamento",347
+2020-06-25,"Piemonte","Torino",15870
+2020-06-25,"Piemonte","Vercelli",1321
+2020-06-25,"Piemonte","Novara",2785
+2020-06-25,"Piemonte","Cuneo",2851
+2020-06-25,"Piemonte","Asti",1874
+2020-06-25,"Piemonte","Alessandria",4063
+2020-06-25,"Valle d'Aosta","Aosta",1194
+2020-06-25,"Liguria","Imperia",1492
+2020-06-25,"Liguria","Savona",1543
+2020-06-25,"Liguria","Genova",5544
+2020-06-25,"Liguria","La Spezia",854
+2020-06-25,"Lombardia","Varese",3878
+2020-06-25,"Lombardia","Como",4078
+2020-06-25,"Lombardia","Sondrio",1575
+2020-06-25,"Lombardia","Milano",24267
+2020-06-25,"Lombardia","Bergamo",14271
+2020-06-25,"Lombardia","Brescia",15543
+2020-06-25,"Lombardia","Pavia",5554
+2020-06-25,"Lombardia","Cremona",6596
+2020-06-25,"Lombardia","Mantova",3463
+2020-06-25,"Bolzano","Bolzano",2634
+2020-06-25,"Trento","Trento",4855
+2020-06-25,"Veneto","Verona",5123
+2020-06-25,"Veneto","Vicenza",2859
+2020-06-25,"Veneto","Belluno",1185
+2020-06-25,"Veneto","Treviso",2670
+2020-06-25,"Veneto","Venezia",2681
+2020-06-25,"Veneto","Padova",3947
+2020-06-25,"Veneto","Rovigo",444
+2020-06-25,"Friuli V.G.","Udine",997
+2020-06-25,"Friuli V.G.","Gorizia",216
+2020-06-25,"Friuli V.G.","Trieste",1393
+2020-06-25,"Emilia Romagna","Piacenza",4423
+2020-06-25,"Emilia Romagna","Parma",3640
+2020-06-25,"Emilia Romagna","Reggio nell'Emilia",4906
+2020-06-25,"Emilia Romagna","Modena",3867
+2020-06-25,"Emilia Romagna","Bologna",5160
+2020-06-25,"Emilia Romagna","Ferrara",1031
+2020-06-25,"Emilia Romagna","Ravenna",1021
+2020-06-25,"Emilia Romagna","Forlì-Cesena",1728
+2020-06-25,"Marche","Pesaro e Urbino",2757
+2020-06-25,"Marche","Ancona",1875
+2020-06-25,"Marche","Macerata",1152
+2020-06-25,"Marche","Ascoli Piceno",290
+2020-06-25,"Toscana","Massa Carrara",1050
+2020-06-25,"Toscana","Lucca",1351
+2020-06-25,"Toscana","Pistoia",743
+2020-06-25,"Toscana","Firenze",3185
+2020-06-25,"Toscana","Livorno",476
+2020-06-25,"Toscana","Pisa",925
+2020-06-25,"Toscana","Arezzo",670
+2020-06-25,"Toscana","Siena",427
+2020-06-25,"Toscana","Grosseto",395
+2020-06-25,"Umbria","Perugia",1008
+2020-06-25,"Umbria","Terni",375
+2020-06-25,"Lazio","Viterbo",457
+2020-06-25,"Lazio","Rieti",411
+2020-06-25,"Lazio","Roma",5817
+2020-06-25,"Lazio","Latina",606
+2020-06-25,"Lazio","Frosinone",660
+2020-06-25,"Campania","Caserta",515
+2020-06-25,"Campania","Benevento",209
+2020-06-25,"Campania","Napoli",2647
+2020-06-25,"Campania","Avellino",552
+2020-06-25,"Campania","Salerno",692
+2020-06-25,"Abruzzo","L'Aquila",224
+2020-06-25,"Abruzzo","Teramo",631
+2020-06-25,"Abruzzo","Pescara",1585
+2020-06-25,"Abruzzo","Chieti",816
+2020-06-25,"Molise","Campobasso",363
+2020-06-25,"Puglia","Foggia",1170
+2020-06-25,"Puglia","Bari",1491
+2020-06-25,"Puglia","Taranto",281
+2020-06-25,"Puglia","Brindisi",659
+2020-06-25,"Puglia","Lecce",520
+2020-06-25,"Basilicata","Potenza",189
+2020-06-25,"Basilicata","Matera",210
+2020-06-25,"Calabria","Cosenza",468
+2020-06-25,"Calabria","Catanzaro",214
+2020-06-25,"Calabria","Reggio di Calabria",289
+2020-06-25,"Sicilia","Trapani",136
+2020-06-25,"Sicilia","Palermo",499
+2020-06-25,"Sicilia","Messina",473
+2020-06-25,"Sicilia","Agrigento",135
+2020-06-25,"Sicilia","Caltanissetta",186
+2020-06-25,"Sicilia","Enna",438
+2020-06-25,"Sicilia","Catania",777
+2020-06-25,"Sicilia","Ragusa",87
+2020-06-25,"Sicilia","Siracusa",321
+2020-06-25,"Sardegna","Sassari",873
+2020-06-25,"Sardegna","Nuoro",78
+2020-06-25,"Sardegna","Cagliari",251
+2020-06-25,"Friuli V.G.","Pordenone",699
+2020-06-25,"Molise","Isernia",62
+2020-06-25,"Sardegna","Oristano",61
+2020-06-25,"Piemonte","Biella",1044
+2020-06-25,"Lombardia","Lecco",2821
+2020-06-25,"Lombardia","Lodi",3566
+2020-06-25,"Emilia Romagna","Rimini",2137
+2020-06-25,"Toscana","Prato",531
+2020-06-25,"Calabria","Crotone",118
+2020-06-25,"Calabria","Vibo Valentia",84
+2020-06-25,"Piemonte","Verbano-Cusio-Ossola",1133
+2020-06-25,"Lombardia","Monza e della Brianza",5745
+2020-06-25,"Marche","Fermo",471
+2020-06-25,"Puglia","Barletta-Andria-Trani",380
+2020-06-25,"Sardegna","Sud Sardegna",99
+2020-06-25,"Abruzzo","fuori Regione/P.A.",25
+2020-06-25,"Basilicata","fuori Regione/P.A.",2
+2020-06-25,"Bolzano","fuori Regione/P.A.",0
+2020-06-25,"Calabria","fuori Regione/P.A.",2
+2020-06-25,"Campania","fuori Regione/P.A.",0
+2020-06-25,"Emilia Romagna","fuori Regione/P.A.",416
+2020-06-25,"Friuli V.G.","fuori Regione/P.A.",0
+2020-06-25,"Lazio","fuori Regione/P.A.",76
+2020-06-25,"Liguria","fuori Regione/P.A.",204
+2020-06-25,"Lombardia","fuori Regione/P.A.",628
+2020-06-25,"Marche","fuori Regione/P.A.",236
+2020-06-25,"Molise","fuori Regione/P.A.",19
+2020-06-25,"Piemonte","fuori Regione/P.A.",261
+2020-06-25,"Puglia","fuori Regione/P.A.",29
+2020-06-25,"Sardegna","fuori Regione/P.A.",0
+2020-06-25,"Sicilia","fuori Regione/P.A.",0
+2020-06-25,"Toscana","fuori Regione/P.A.",471
+2020-06-25,"Trento","fuori Regione/P.A.",0
+2020-06-25,"Umbria","fuori Regione/P.A.",56
+2020-06-25,"Valle d'Aosta","fuori Regione/P.A.",0
+2020-06-25,"Veneto","fuori Regione/P.A.",324
+2020-06-25,"Abruzzo","In fase di definizione/aggiornamento",3
+2020-06-25,"Basilicata","In fase di definizione/aggiornamento",0
+2020-06-25,"Bolzano","In fase di definizione/aggiornamento",0
+2020-06-25,"Calabria","In fase di definizione/aggiornamento",0
+2020-06-25,"Campania","In fase di definizione/aggiornamento",47
+2020-06-25,"Emilia Romagna","In fase di definizione/aggiornamento",22
+2020-06-25,"Friuli V.G.","In fase di definizione/aggiornamento",0
+2020-06-25,"Lazio","In fase di definizione/aggiornamento",24
+2020-06-25,"Liguria","In fase di definizione/aggiornamento",317
+2020-06-25,"Lombardia","In fase di definizione/aggiornamento",1446
+2020-06-25,"Marche","In fase di definizione/aggiornamento",0
+2020-06-25,"Molise","In fase di definizione/aggiornamento",0
+2020-06-25,"Piemonte","In fase di definizione/aggiornamento",94
+2020-06-25,"Puglia","In fase di definizione/aggiornamento",0
+2020-06-25,"Sardegna","In fase di definizione/aggiornamento",0
+2020-06-25,"Sicilia","In fase di definizione/aggiornamento",24
+2020-06-25,"Toscana","In fase di definizione/aggiornamento",0
+2020-06-25,"Trento","In fase di definizione/aggiornamento",0
+2020-06-25,"Umbria","In fase di definizione/aggiornamento",0
+2020-06-25,"Valle d'Aosta","In fase di definizione/aggiornamento",0
+2020-06-25,"Veneto","In fase di definizione/aggiornamento",24
