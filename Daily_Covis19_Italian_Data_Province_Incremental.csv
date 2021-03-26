@@ -56414,15 +56414,15 @@
 2021-03-25,"Sicilia","Fuori Regione / Provincia Autonoma",0
 2021-03-25,"Sicilia","In fase di definizione/aggiornamento",0
 2021-03-25,"Toscana","Massa Carrara",61
-2021-03-25,"Toscana","Lucca",175
-2021-03-25,"Toscana","Pistoia",128
-2021-03-25,"Toscana","Firenze",494
-2021-03-25,"Toscana","Livorno",88
+2021-03-25,"Toscana","Lucca",177
+2021-03-25,"Toscana","Pistoia",135
+2021-03-25,"Toscana","Firenze",502
+2021-03-25,"Toscana","Livorno",91
 2021-03-25,"Toscana","Pisa",151
 2021-03-25,"Toscana","Arezzo",134
 2021-03-25,"Toscana","Siena",89
 2021-03-25,"Toscana","Grosseto",111
-2021-03-25,"Toscana","Prato",87
+2021-03-25,"Toscana","Prato",169
 2021-03-25,"Toscana","Fuori Regione / Provincia Autonoma",0
 2021-03-25,"Toscana","In fase di definizione/aggiornamento",0
 2021-03-25,"Umbria","Perugia",90
@@ -56441,3 +56441,152 @@
 2021-03-25,"Veneto","Rovigo",102
 2021-03-25,"Veneto","Fuori Regione / Provincia Autonoma",15
 2021-03-25,"Veneto","In fase di definizione/aggiornamento",5
+2021-03-26,"Abruzzo","L'Aquila",132
+2021-03-26,"Abruzzo","Teramo",77
+2021-03-26,"Abruzzo","Pescara",66
+2021-03-26,"Abruzzo","Chieti",109
+2021-03-26,"Abruzzo","Fuori Regione / Provincia Autonoma",8
+2021-03-26,"Abruzzo","In fase di definizione/aggiornamento",0
+2021-03-26,"Basilicata","Potenza",96
+2021-03-26,"Basilicata","Matera",44
+2021-03-26,"Basilicata","Fuori Regione / Provincia Autonoma",3
+2021-03-26,"Basilicata","In fase di definizione/aggiornamento",0
+2021-03-26,"Calabria","Cosenza",186
+2021-03-26,"Calabria","Catanzaro",63
+2021-03-26,"Calabria","Reggio di Calabria",82
+2021-03-26,"Calabria","Crotone",47
+2021-03-26,"Calabria","Vibo Valentia",34
+2021-03-26,"Calabria","Fuori Regione / Provincia Autonoma",0
+2021-03-26,"Calabria","In fase di definizione/aggiornamento",0
+2021-03-26,"Campania","Caserta",338
+2021-03-26,"Campania","Benevento",109
+2021-03-26,"Campania","Napoli",1114
+2021-03-26,"Campania","Avellino",108
+2021-03-26,"Campania","Salerno",274
+2021-03-26,"Campania","Fuori Regione / Provincia Autonoma",4
+2021-03-26,"Campania","In fase di definizione/aggiornamento",0
+2021-03-26,"Emilia Romagna","Piacenza",66
+2021-03-26,"Emilia Romagna","Parma",268
+2021-03-26,"Emilia Romagna","Reggio nell'Emilia",147
+2021-03-26,"Emilia Romagna","Modena",408
+2021-03-26,"Emilia Romagna","Bologna",609
+2021-03-26,"Emilia Romagna","Ferrara",167
+2021-03-26,"Emilia Romagna","Ravenna",234
+2021-03-26,"Emilia Romagna","Forlì-Cesena",251
+2021-03-26,"Emilia Romagna","Rimini",216
+2021-03-26,"Emilia Romagna","Fuori Regione / Provincia Autonoma",13
+2021-03-26,"Emilia Romagna","In fase di definizione/aggiornamento",3
+2021-03-26,"Friuli V.G.","Udine",448
+2021-03-26,"Friuli V.G.","Gorizia",59
+2021-03-26,"Friuli V.G.","Trieste",163
+2021-03-26,"Friuli V.G.","Pordenone",90
+2021-03-26,"Friuli V.G.","Fuori Regione / Provincia Autonoma",8
+2021-03-26,"Friuli V.G.","In fase di definizione/aggiornamento",0
+2021-03-26,"Lazio","Viterbo",124
+2021-03-26,"Lazio","Rieti",48
+2021-03-26,"Lazio","Roma",1318
+2021-03-26,"Lazio","Latina",167
+2021-03-26,"Lazio","Frosinone",335
+2021-03-26,"Lazio","Fuori Regione / Provincia Autonoma",14
+2021-03-26,"Lazio","In fase di definizione/aggiornamento",0
+2021-03-26,"Liguria","Imperia",78
+2021-03-26,"Liguria","Savona",116
+2021-03-26,"Liguria","Genova",201
+2021-03-26,"Liguria","La Spezia",73
+2021-03-26,"Liguria","Fuori Regione / Provincia Autonoma",6
+2021-03-26,"Liguria","In fase di definizione/aggiornamento",13
+2021-03-26,"Lombardia","Varese",472
+2021-03-26,"Lombardia","Como",427
+2021-03-26,"Lombardia","Sondrio",66
+2021-03-26,"Lombardia","Milano",1460
+2021-03-26,"Lombardia","Bergamo",317
+2021-03-26,"Lombardia","Brescia",696
+2021-03-26,"Lombardia","Pavia",262
+2021-03-26,"Lombardia","Cremona",189
+2021-03-26,"Lombardia","Mantova",287
+2021-03-26,"Lombardia","Lecco",171
+2021-03-26,"Lombardia","Lodi",84
+2021-03-26,"Lombardia","Monza e della Brianza",548
+2021-03-26,"Lombardia","Fuori Regione / Provincia Autonoma",42
+2021-03-26,"Lombardia","In fase di definizione/aggiornamento",56
+2021-03-26,"Marche","Pesaro e Urbino",175
+2021-03-26,"Marche","Ancona",243
+2021-03-26,"Marche","Macerata",105
+2021-03-26,"Marche","Ascoli Piceno",70
+2021-03-26,"Marche","Fermo",56
+2021-03-26,"Marche","Fuori Regione / Provincia Autonoma",25
+2021-03-26,"Marche","In fase di definizione/aggiornamento",0
+2021-03-26,"Molise","Campobasso",39
+2021-03-26,"Molise","Isernia",14
+2021-03-26,"Molise","Fuori Regione / Provincia Autonoma",0
+2021-03-26,"Molise","In fase di definizione/aggiornamento",0
+2021-03-26,"Bolzano","Bolzano",149
+2021-03-26,"Bolzano","Fuori Regione / Provincia Autonoma",0
+2021-03-26,"Bolzano","In fase di definizione/aggiornamento",0
+2021-03-26,"Trento","Trento",238
+2021-03-26,"Trento","Fuori Regione / Provincia Autonoma",0
+2021-03-26,"Trento","In fase di definizione/aggiornamento",0
+2021-03-26,"Piemonte","Torino",1197
+2021-03-26,"Piemonte","Vercelli",97
+2021-03-26,"Piemonte","Novara",175
+2021-03-26,"Piemonte","Cuneo",419
+2021-03-26,"Piemonte","Asti",66
+2021-03-26,"Piemonte","Alessandria",84
+2021-03-26,"Piemonte","Biella",13
+2021-03-26,"Piemonte","Verbano-Cusio-Ossola",61
+2021-03-26,"Piemonte","Fuori Regione / Provincia Autonoma",5
+2021-03-26,"Piemonte","In fase di definizione/aggiornamento",0
+2021-03-26,"Puglia","Foggia",382
+2021-03-26,"Puglia","Bari",817
+2021-03-26,"Puglia","Taranto",381
+2021-03-26,"Puglia","Brindisi",176
+2021-03-26,"Puglia","Lecce",243
+2021-03-26,"Puglia","Barletta-Andria-Trani",160
+2021-03-26,"Puglia","Fuori Regione / Provincia Autonoma",8
+2021-03-26,"Puglia","In fase di definizione/aggiornamento",-5
+2021-03-26,"Sardegna","Sassari",36
+2021-03-26,"Sardegna","Nuoro",34
+2021-03-26,"Sardegna","Cagliari",73
+2021-03-26,"Sardegna","Oristano",11
+2021-03-26,"Sardegna","Sud Sardegna",24
+2021-03-26,"Sardegna","Fuori Regione / Provincia Autonoma",0
+2021-03-26,"Sardegna","In fase di definizione/aggiornamento",0
+2021-03-26,"Sicilia","Trapani",47
+2021-03-26,"Sicilia","Palermo",346
+2021-03-26,"Sicilia","Messina",30
+2021-03-26,"Sicilia","Agrigento",91
+2021-03-26,"Sicilia","Caltanissetta",61
+2021-03-26,"Sicilia","Enna",20
+2021-03-26,"Sicilia","Catania",201
+2021-03-26,"Sicilia","Ragusa",56
+2021-03-26,"Sicilia","Siracusa",40
+2021-03-26,"Sicilia","Fuori Regione / Provincia Autonoma",0
+2021-03-26,"Sicilia","In fase di definizione/aggiornamento",0
+2021-03-26,"Toscana","Massa Carrara",50
+2021-03-26,"Toscana","Lucca",152
+2021-03-26,"Toscana","Pistoia",154
+2021-03-26,"Toscana","Firenze",323
+2021-03-26,"Toscana","Livorno",87
+2021-03-26,"Toscana","Pisa",151
+2021-03-26,"Toscana","Arezzo",150
+2021-03-26,"Toscana","Siena",86
+2021-03-26,"Toscana","Grosseto",59
+2021-03-26,"Toscana","Prato",213
+2021-03-26,"Toscana","Fuori Regione / Provincia Autonoma",0
+2021-03-26,"Toscana","In fase di definizione/aggiornamento",0
+2021-03-26,"Umbria","Perugia",230
+2021-03-26,"Umbria","Terni",73
+2021-03-26,"Umbria","Fuori Regione / Provincia Autonoma",17
+2021-03-26,"Umbria","In fase di definizione/aggiornamento",0
+2021-03-26,"Valle d'Aosta","Aosta",57
+2021-03-26,"Valle d'Aosta","Fuori Regione / Provincia Autonoma",0
+2021-03-26,"Valle d'Aosta","In fase di definizione/aggiornamento",0
+2021-03-26,"Veneto","Verona",383
+2021-03-26,"Veneto","Vicenza",335
+2021-03-26,"Veneto","Belluno",80
+2021-03-26,"Veneto","Treviso",269
+2021-03-26,"Veneto","Venezia",505
+2021-03-26,"Veneto","Padova",426
+2021-03-26,"Veneto","Rovigo",101
+2021-03-26,"Veneto","Fuori Regione / Provincia Autonoma",-17
+2021-03-26,"Veneto","In fase di definizione/aggiornamento",13
