@@ -98311,11 +98311,11 @@
 2021-12-31,"Veneto","Fuori Regione / Provincia Autonoma",171
 2021-12-31,"Veneto","In fase di definizione/aggiornamento",167
 2022-01-01,"Abruzzo","L'Aquila",498
-2022-01-01,"Abruzzo","Teramo",835
-2022-01-01,"Abruzzo","Pescara",1054
-2022-01-01,"Abruzzo","Chieti",1320
+2022-01-01,"Abruzzo","Teramo",855
+2022-01-01,"Abruzzo","Pescara",1055
+2022-01-01,"Abruzzo","Chieti",1378
 2022-01-01,"Abruzzo","Fuori Regione / Provincia Autonoma",87
-2022-01-01,"Abruzzo","In fase di definizione/aggiornamento",132
+2022-01-01,"Abruzzo","In fase di definizione/aggiornamento",149
 2022-01-01,"Basilicata","Potenza",593
 2022-01-01,"Basilicata","Matera",207
 2022-01-01,"Basilicata","Fuori Regione / Provincia Autonoma",42
@@ -98459,3 +98459,152 @@
 2022-01-01,"Veneto","Rovigo",459
 2022-01-01,"Veneto","Fuori Regione / Provincia Autonoma",185
 2022-01-01,"Veneto","In fase di definizione/aggiornamento",178
+2022-01-02,"Abruzzo","L'Aquila",98
+2022-01-02,"Abruzzo","Teramo",556
+2022-01-02,"Abruzzo","Pescara",201
+2022-01-02,"Abruzzo","Chieti",226
+2022-01-02,"Abruzzo","Fuori Regione / Provincia Autonoma",26
+2022-01-02,"Abruzzo","In fase di definizione/aggiornamento",27
+2022-01-02,"Basilicata","Potenza",270
+2022-01-02,"Basilicata","Matera",37
+2022-01-02,"Basilicata","Fuori Regione / Provincia Autonoma",15
+2022-01-02,"Basilicata","In fase di definizione/aggiornamento",0
+2022-01-02,"Calabria","Cosenza",104
+2022-01-02,"Calabria","Catanzaro",112
+2022-01-02,"Calabria","Reggio di Calabria",457
+2022-01-02,"Calabria","Crotone",3
+2022-01-02,"Calabria","Vibo Valentia",115
+2022-01-02,"Calabria","Fuori Regione / Provincia Autonoma",2
+2022-01-02,"Calabria","In fase di definizione/aggiornamento",0
+2022-01-02,"Campania","Caserta",983
+2022-01-02,"Campania","Benevento",10
+2022-01-02,"Campania","Napoli",3295
+2022-01-02,"Campania","Avellino",255
+2022-01-02,"Campania","Salerno",617
+2022-01-02,"Campania","Fuori Regione / Provincia Autonoma",28
+2022-01-02,"Campania","In fase di definizione/aggiornamento",4
+2022-01-02,"Emilia Romagna","Piacenza",264
+2022-01-02,"Emilia Romagna","Parma",982
+2022-01-02,"Emilia Romagna","Reggio nell'Emilia",838
+2022-01-02,"Emilia Romagna","Modena",896
+2022-01-02,"Emilia Romagna","Bologna",1448
+2022-01-02,"Emilia Romagna","Ferrara",517
+2022-01-02,"Emilia Romagna","Ravenna",1179
+2022-01-02,"Emilia Romagna","Forlì-Cesena",1169
+2022-01-02,"Emilia Romagna","Rimini",1655
+2022-01-02,"Emilia Romagna","Fuori Regione / Provincia Autonoma",86
+2022-01-02,"Emilia Romagna","In fase di definizione/aggiornamento",54
+2022-01-02,"Friuli V.G.","Udine",510
+2022-01-02,"Friuli V.G.","Gorizia",110
+2022-01-02,"Friuli V.G.","Trieste",313
+2022-01-02,"Friuli V.G.","Pordenone",226
+2022-01-02,"Friuli V.G.","Fuori Regione / Provincia Autonoma",27
+2022-01-02,"Friuli V.G.","In fase di definizione/aggiornamento",0
+2022-01-02,"Lazio","Viterbo",279
+2022-01-02,"Lazio","Rieti",153
+2022-01-02,"Lazio","Roma",6778
+2022-01-02,"Lazio","Latina",630
+2022-01-02,"Lazio","Frosinone",153
+2022-01-02,"Lazio","Fuori Regione / Provincia Autonoma",0
+2022-01-02,"Lazio","In fase di definizione/aggiornamento",0
+2022-01-02,"Liguria","Imperia",146
+2022-01-02,"Liguria","Savona",70
+2022-01-02,"Liguria","Genova",494
+2022-01-02,"Liguria","La Spezia",513
+2022-01-02,"Liguria","Fuori Regione / Provincia Autonoma",17
+2022-01-02,"Liguria","In fase di definizione/aggiornamento",25
+2022-01-02,"Lombardia","Varese",1075
+2022-01-02,"Lombardia","Como",445
+2022-01-02,"Lombardia","Sondrio",298
+2022-01-02,"Lombardia","Milano",3945
+2022-01-02,"Lombardia","Bergamo",975
+2022-01-02,"Lombardia","Brescia",971
+2022-01-02,"Lombardia","Pavia",359
+2022-01-02,"Lombardia","Cremona",252
+2022-01-02,"Lombardia","Mantova",281
+2022-01-02,"Lombardia","Lecco",255
+2022-01-02,"Lombardia","Lodi",131
+2022-01-02,"Lombardia","Monza e della Brianza",1102
+2022-01-02,"Lombardia","Fuori Regione / Provincia Autonoma",90
+2022-01-02,"Lombardia","In fase di definizione/aggiornamento",246
+2022-01-02,"Marche","Pesaro e Urbino",185
+2022-01-02,"Marche","Ancona",397
+2022-01-02,"Marche","Macerata",40
+2022-01-02,"Marche","Ascoli Piceno",38
+2022-01-02,"Marche","Fermo",10
+2022-01-02,"Marche","Fuori Regione / Provincia Autonoma",29
+2022-01-02,"Marche","In fase di definizione/aggiornamento",0
+2022-01-02,"Molise","Campobasso",240
+2022-01-02,"Molise","Isernia",140
+2022-01-02,"Molise","Fuori Regione / Provincia Autonoma",0
+2022-01-02,"Molise","In fase di definizione/aggiornamento",0
+2022-01-02,"Bolzano","Bolzano",359
+2022-01-02,"Bolzano","Fuori Regione / Provincia Autonoma",0
+2022-01-02,"Bolzano","In fase di definizione/aggiornamento",0
+2022-01-02,"Trento","Trento",408
+2022-01-02,"Trento","Fuori Regione / Provincia Autonoma",0
+2022-01-02,"Trento","In fase di definizione/aggiornamento",0
+2022-01-02,"Piemonte","Torino",1245
+2022-01-02,"Piemonte","Vercelli",88
+2022-01-02,"Piemonte","Novara",139
+2022-01-02,"Piemonte","Cuneo",278
+2022-01-02,"Piemonte","Asti",143
+2022-01-02,"Piemonte","Alessandria",342
+2022-01-02,"Piemonte","Biella",75
+2022-01-02,"Piemonte","Verbano-Cusio-Ossola",132
+2022-01-02,"Piemonte","Fuori Regione / Provincia Autonoma",16
+2022-01-02,"Piemonte","In fase di definizione/aggiornamento",161
+2022-01-02,"Puglia","Foggia",459
+2022-01-02,"Puglia","Bari",1152
+2022-01-02,"Puglia","Taranto",376
+2022-01-02,"Puglia","Brindisi",325
+2022-01-02,"Puglia","Lecce",815
+2022-01-02,"Puglia","Barletta-Andria-Trani",266
+2022-01-02,"Puglia","Fuori Regione / Provincia Autonoma",46
+2022-01-02,"Puglia","In fase di definizione/aggiornamento",12
+2022-01-02,"Sardegna","Sassari",330
+2022-01-02,"Sardegna","Nuoro",14
+2022-01-02,"Sardegna","Cagliari",202
+2022-01-02,"Sardegna","Oristano",10
+2022-01-02,"Sardegna","Sud Sardegna",119
+2022-01-02,"Sardegna","Fuori Regione / Provincia Autonoma",0
+2022-01-02,"Sardegna","In fase di definizione/aggiornamento",0
+2022-01-02,"Sicilia","Trapani",377
+2022-01-02,"Sicilia","Palermo",701
+2022-01-02,"Sicilia","Messina",604
+2022-01-02,"Sicilia","Agrigento",575
+2022-01-02,"Sicilia","Caltanissetta",177
+2022-01-02,"Sicilia","Enna",16
+2022-01-02,"Sicilia","Catania",797
+2022-01-02,"Sicilia","Ragusa",404
+2022-01-02,"Sicilia","Siracusa",313
+2022-01-02,"Sicilia","Fuori Regione / Provincia Autonoma",0
+2022-01-02,"Sicilia","In fase di definizione/aggiornamento",0
+2022-01-02,"Toscana","Massa Carrara",319
+2022-01-02,"Toscana","Lucca",495
+2022-01-02,"Toscana","Pistoia",361
+2022-01-02,"Toscana","Firenze",2413
+2022-01-02,"Toscana","Livorno",244
+2022-01-02,"Toscana","Pisa",713
+2022-01-02,"Toscana","Arezzo",607
+2022-01-02,"Toscana","Siena",627
+2022-01-02,"Toscana","Grosseto",217
+2022-01-02,"Toscana","Prato",371
+2022-01-02,"Toscana","Fuori Regione / Provincia Autonoma",0
+2022-01-02,"Toscana","In fase di definizione/aggiornamento",0
+2022-01-02,"Umbria","Perugia",469
+2022-01-02,"Umbria","Terni",289
+2022-01-02,"Umbria","Fuori Regione / Provincia Autonoma",30
+2022-01-02,"Umbria","In fase di definizione/aggiornamento",0
+2022-01-02,"Valle d'Aosta","Aosta",123
+2022-01-02,"Valle d'Aosta","Fuori Regione / Provincia Autonoma",96
+2022-01-02,"Valle d'Aosta","In fase di definizione/aggiornamento",-102
+2022-01-02,"Veneto","Verona",955
+2022-01-02,"Veneto","Vicenza",325
+2022-01-02,"Veneto","Belluno",82
+2022-01-02,"Veneto","Treviso",839
+2022-01-02,"Veneto","Venezia",972
+2022-01-02,"Veneto","Padova",331
+2022-01-02,"Veneto","Rovigo",212
+2022-01-02,"Veneto","Fuori Regione / Provincia Autonoma",167
+2022-01-02,"Veneto","In fase di definizione/aggiornamento",-67
